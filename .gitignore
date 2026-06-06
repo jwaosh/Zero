@@ -19,3 +19,9 @@ pnpm-debug.log*
 .turbo/
 coverage/
 *.tsbuildinfo
+
+# agent tooling — personal/local settings and vendored skills.
+# Skills are restorable from skills-lock.json, so we track the lock, not the content.
+.claude/settings.local.json
+.claude/skills/
+.agents/skills/
