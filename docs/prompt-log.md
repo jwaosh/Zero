@@ -89,5 +89,8 @@ not a spec — prompts are reproduced as sent (lightly trimmed for length where 
 
 23. > from your memory, can you fetch me all of the prompts I've sent you to create Zero?
 
-24. > For personal curiosity, I'd love a log of all the prompts I've put into claude as I build
-    > this project. Make a file for this transcript and upload it to the Zero repository.
+24. > For personal curiousity, I'd love a log of all the prompts I've put into claude as I build this project. Make a file for this transcript and upload it to the Zero repository
+
+## 2026-06-07 — `docs/prompt-log`
+
+25. > Let's create a skill to open a pull request, called /pr. As part of this skill, append new prompts that were used to make the changes related to the PR to the prompt-log
