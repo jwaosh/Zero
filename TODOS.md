@@ -25,7 +25,7 @@ Legend: **[YOU]** = needs you / an external account · **[ME]** = code to build 
 **[VERIFY]** = needs the DB live (these are the "couldn't verify locally" items).
 
 - [x] **#8 [YOU]** Set up Postgres — Neon account **or** local Docker → produces `DATABASE_URL` _(Neon project "Zero", `autumn-frost-16768611`)_
-- [ ] **#9 [ME]** Add `docker-compose.yml` for local Postgres (enables Path B; still needs Docker installed)
+- [x] **#9 [ME]** Add `docker-compose.yml` for local Postgres (offline fallback; default is Neon + branching for throwaway tests)
 - [x] **#10 [YOU]** `cp apps/api/.env.example apps/api/.env`; set `DATABASE_URL` + `SESSION_SECRET`
 - [x] **#11 [YOU]** `cp apps/web/.env.local.example apps/web/.env.local`
 - [x] **#12 [VERIFY]** `pnpm db:migrate` applies cleanly (creates accounts/devices/events + enums + index)

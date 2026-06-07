@@ -88,3 +88,21 @@ curl -X POST http://localhost:4000/api/events \
 ```
 
 …or use the **+ Impulse / + Action** buttons on the dashboard.
+
+### Database choices for local dev
+
+By default, point `DATABASE_URL` at your **Neon** project — dev then matches prod
+exactly. For risky/throwaway testing, create a **Neon branch** (a cheap
+copy-on-write fork), point `DATABASE_URL` at it, and delete it when done — the
+main branch's data is never at risk.
+
+If you need to work **offline**, a local Postgres is available via Docker:
+
+```bash
+docker compose up -d     # Postgres on localhost:5432 (db "zero")
+# apps/api/.env: DATABASE_URL=postgres://postgres:postgres@localhost:5432/zero
+pnpm db:migrate && pnpm db:seed
+docker compose down      # stop (add -v to wipe the data volume)
+```
+
+Requires a container runtime (OrbStack, Colima, or Docker Desktop).

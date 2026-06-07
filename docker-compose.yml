@@ -1,0 +1,35 @@
+# Optional local Postgres for offline development.
+#
+# Day-to-day we use Neon (cloud) — see README "Database". This file is here as a
+# drop-in offline fallback: it runs the same Postgres locally so DATABASE_URL can
+# point at localhost instead of Neon. You do NOT need this to work on Zero.
+#
+#   docker compose up -d            # start Postgres in the background
+#   # then in apps/api/.env:
+#   #   DATABASE_URL=postgres://postgres:postgres@localhost:5432/zero
+#   pnpm db:migrate && pnpm db:seed
+#   docker compose down             # stop (add -v to also wipe the data volume)
+#
+# Requires a container runtime (OrbStack, Colima, or Docker Desktop).
+
+services:
+  db:
+    image: postgres:18
+    container_name: zero-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: zero
+    ports:
+      - "5432:5432"
+    volumes:
+      - zero-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d zero"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  zero-pgdata:
