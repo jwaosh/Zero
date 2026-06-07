@@ -6,6 +6,7 @@ import { HourlyChart } from "@/components/charts/HourlyChart";
 import { RateChart } from "@/components/charts/RateChart";
 import { LogoutButton } from "@/components/LogoutButton";
 import { QuickLog } from "@/components/QuickLog";
+import { Simulator } from "@/components/Simulator";
 import { StatCards } from "@/components/StatCards";
 import { apiFetch } from "@/lib/api";
 import { requireAccount } from "@/lib/auth";
@@ -47,6 +48,11 @@ export default async function DashboardPage({
       </section>
 
       <StatCards summary={summary} />
+
+      <section className="card">
+        <h2>Device simulator</h2>
+        <Simulator />
+      </section>
 
       <section className="card">
         <h2>Impulses vs. actions by day</h2>

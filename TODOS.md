@@ -30,7 +30,7 @@ Legend: **[YOU]** = needs you / an external account · **[ME]** = code to build 
 - [x] **#11 [YOU]** `cp apps/web/.env.local.example apps/web/.env.local`
 - [x] **#12 [VERIFY]** `pnpm db:migrate` applies cleanly (creates accounts/devices/events + enums + index)
 - [x] **#13 [VERIFY]** `SEED_SAMPLE=1 pnpm db:seed` — creates account, prints one-time device token, generates ~3 weeks of sample data
-- [ ] **#14 [ME]** Build web **button-press simulator** — two big Impulse/Action buttons that POST to the real ingest endpoint (`POST /api/events`) with a device token (entered once, stored in localStorage) via a Next proxy `/api/simulate`. Exercises the exact ESP32 path: `source=button`, `device_id` set, `last_seen_at` updated. (The existing `+ Impulse / + Action` buttons work but write `source=manual` with no device — the simulator is the faithful hardware stand-in.)
+- [x] **#14 [ME]** Build web **button-press simulator** — two big Impulse/Action buttons that POST to the real ingest endpoint (`POST /api/events`) with a device token (entered once, stored in localStorage) via a Next proxy `/api/simulate`. Exercises the exact ESP32 path: `source=button`, `device_id` set, `last_seen_at` updated. (The existing `+ Impulse / + Action` buttons work but write `source=manual` with no device — the simulator is the faithful hardware stand-in.)
 - [ ] **#15 [VERIFY]** `pnpm dev` → log in with seeded creds → paste device token into simulator → press buttons → confirm ingest → DB → dashboard updates (cards + daily/rate/hourly charts, `last_seen_at`)
 - [ ] **#16 [VERIFY]** _(optional)_ Tenant isolation — seed a second account+device, confirm reads never cross accounts
 
